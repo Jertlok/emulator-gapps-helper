@@ -21,6 +21,9 @@ for folder in etc framework app priv-app lib usr; do
        adb push $folder /system
 done
 
+# Try to remove apps that might give conflicts
+adb shell rm -rf /system/priv-app/PackageInstaller
+
 # reboot the emulator
 adb shell stop && adb shell start
 
